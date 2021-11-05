@@ -1,5 +1,5 @@
-// Código para preenchimento e validação automática de CEP 
-/* Exemplo > <input name="cep" type="text" id="cep" value="" size="10" maxlength="9" onblur="pesquisacep(this.value);" /></label> */
+// PREENCHIMENTO AUTOMÁTICO DE CAMPOS COM CEP
+// onblur="pesquisacep(this.value);"
  
  function limpa_formulário_cep() {
             //Limpa valores do formulário de cep.
@@ -7,6 +7,7 @@
             document.getElementById('bairro').value=("");
             document.getElementById('cidade').value=("");
             document.getElementById('uf').value=("");
+	 /* document.getElementById('txtPais').value=(""); */ // O WebService não disponibiza o "País" do CEP, então, aqui estou fingindo que ele é preenchido automaticamente.
     }
 
     function meu_callback(conteudo) {
@@ -16,6 +17,8 @@
             document.getElementById('bairro').value=(conteudo.bairro);
             document.getElementById('cidade').value=(conteudo.localidade);
             document.getElementById('uf').value=(conteudo.uf);
+	 /* document.getElementById('txtPais').value=("Brasil"); */ // Fingindo que "País" é preenchido automaticamente.
+		
         } //end if.
         else {
             //CEP não Encontrado.
@@ -43,6 +46,7 @@
                 document.getElementById('bairro').value="...";
                 document.getElementById('cidade').value="...";
                 document.getElementById('uf').value="...";
+            /*  document.getElementById('txtPais').value=("..."); */ // Fingindo que "País" está sendo consultado.
                 
                 //Cria um elemento javascript.
                 var script = document.createElement('script');
@@ -65,20 +69,3 @@
             limpa_formulário_cep();
         }
     };
-    
-    
-    
-    
- // Máscara
- /* Exemplo > onkeypress="formatar('#####-###', this);" // onkeypress="formatar('(##) #####-####', this);" */
- 
-	function formatar(mascara, documento){
-	var i = documento.value.length; 
-	var saida = mascara.substring(0,1);
-	var texto = mascara.substring(i)
-
-	if (texto.substring(0,1) != saida){
-documento.value += texto.substring(0,1);
-
-	}
-	}
