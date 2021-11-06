@@ -4,6 +4,7 @@
  */
 
 // VALIDAÇÃO CPF E CNPJ NO MESMO CAMPO ===========================================
+// !!ADICIONE TAMBÉM UM SOMENTE NÚMEROS NO INPUT!!
 // onblur="validaFormato(this);"
  
   function validaFormato(element) {
